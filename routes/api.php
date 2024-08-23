@@ -3,12 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Auth\AuthController;
-
-use App\Http\Controllers\Api\ClienteController;
-use App\Http\Controllers\Api\ProjetoController;
-use App\Http\Controllers\Api\InstalacaoController;
-use App\Http\Controllers\Api\EquipamentoController;
+use App\Http\Controllers\Api\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +15,19 @@ use App\Http\Controllers\Api\EquipamentoController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('/auth/register', [AuthController::class, 'createUser']);
-Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
+use App\Http\Controllers\Api\Auth\AuthController; // Add this line
+
+Route::controller(AuthController::class)->group(function(){
+    Route::post('register', 'register');
+    Route::post('login', 'login');
+});
+
 
 Route::middleware('auth:sanctum')->group(function(){
+
+    Route::apiResource('customers', CustomerController::class);
+
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 

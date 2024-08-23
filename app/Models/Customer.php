@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    protected $table = 'customer';
+    protected $table = 'customers';
 
     protected $fillable = [
         'name',
@@ -19,5 +19,10 @@ class Customer extends Model
     public function project()
     {
         return $this->hasMany(Project::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
