@@ -29,4 +29,9 @@ class Project extends Model
     {
         return $this->belongsTo(Customer::class);
     }
+
+    public function equipments()
+    {
+        return $this->hasMany(Equipment::class);
+    }
 }

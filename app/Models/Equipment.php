@@ -11,13 +11,13 @@ class Equipment extends Model
     protected $table = 'equipments';
 
     protected $fillable = [
-        'equipment_type',
+        'type',
         'quantity',
         'project_id'
     ];
 
     protected $casts = [
-        'equipment_type' => EquipmentEnum::class
+        'type' => EquipmentEnum::class
     ];
 
     public function projeto()

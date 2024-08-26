@@ -2,9 +2,7 @@
 
 namespace App\Services;
 
-use App\Http\Requests\Api\Customer\StoreRequest;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use App\Repositories\CustomerRepository;
 
 class CustomerService
@@ -88,7 +86,6 @@ class CustomerService
         try {
             $customer = $this->customerRepository->delete($id);
             
-            // if customer not found
             if (!$customer) {
                 return response()->json(['message' => 'Customer not found'], 404);
             }

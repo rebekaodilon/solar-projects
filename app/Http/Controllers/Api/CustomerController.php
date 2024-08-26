@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Customer\StoreRequest;
-use App\Http\Requests\Api\Customer\UpdateRequest;
+use App\Http\Requests\Customer\StoreRequest;
+use App\Http\Requests\Customer\UpdateRequest;
 use App\Services\CustomerService;
-use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {

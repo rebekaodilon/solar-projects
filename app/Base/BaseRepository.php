@@ -79,6 +79,18 @@ class BaseRepository
 
     /**
      * @param $field
+     * @param array $values
+     * @return Model
+     */
+    public function findByFieldIn($field, array $values)
+    {
+        dd($values);
+        dd($this->model->whereIn($field, $values)->toSql());
+        return $this->model->whereIn($field, $values)->first();
+    }
+
+    /**
+     * @param $field
      * @param $value
      * @return Model
      */

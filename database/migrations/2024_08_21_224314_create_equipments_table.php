@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('equipments', function (Blueprint $table) {
             $table->id();
 
-            $table->enum('equipment_type', [
+            $table->enum('type', [
                 'Módulo',
                 'Inversor',
                 'Microinversor',

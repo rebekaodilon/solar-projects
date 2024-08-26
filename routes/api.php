@@ -3,7 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Api\Auth\AuthController; 
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\ProjectController;
+use App\Http\Controllers\Api\EquipmentController;
+use App\Http\Controllers\Api\InstallationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +21,6 @@ use App\Http\Controllers\Api\CustomerController;
 |
 */
 
-use App\Http\Controllers\Api\Auth\AuthController; // Add this line
-
 Route::controller(AuthController::class)->group(function(){
     Route::post('register', 'register');
     Route::post('login', 'login');
@@ -27,6 +30,16 @@ Route::controller(AuthController::class)->group(function(){
 Route::middleware('auth:sanctum')->group(function(){
 
     Route::apiResource('customers', CustomerController::class);
+    Route::apiResource('projects', ProjectController::class);
+    
+    Route::get('projects/{id}/equipments', [ProjectController::class, 'listEquipments']);
+    Route::post('projects/{id}/equipments', [ProjectController::class, 'storeEquipment']);
+    Route::put('projects/{id}/equipments/{equipmentId}', [ProjectController::class, 'updateEquipment']);
+    Route::delete('projects/{id}/equipments/{equipmentId}', [ProjectController::class, 'destroyEquipment']);
+
+    // list all equipments and installation_types
+    Route::get('equipments', [ProjectController::class, 'listAllEquipments']);
+    Route::get('installation_types', [ProjectController::class, 'listAllInstallationTypes']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });

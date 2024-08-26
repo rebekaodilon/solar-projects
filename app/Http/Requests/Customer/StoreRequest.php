@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Api\Customer;
+namespace App\Http\Requests\Customer;
 
 use App\Base\BaseRequest;
 use App\Traits\DocumentValidation;
