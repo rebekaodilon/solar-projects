@@ -198,26 +198,27 @@ O sistema Solar Projects é uma aplicação para integradores solares que permit
    git clone https://github.com/rebekaodilon/solar-projects.git
    cd solar-projects
    ```
-2. Instale as dependências:
-   ```
-   composer install
-   ```
-3. Copie o arquivo `.env.example` para `.env`:
-   ```
-   cp .env.example .env
-   ```
-4. Configure o arquivo `.env`:
-   - Configure as variáveis de ambiente, como DB_CONNECTION, DB_DATABASE, DB_USERNAME, DB_PASSWORD, etc.
-5. Gere a chave da aplicação:
-   ```
-   php artisan key:generate
-   ```
-6. Configure o ambiente Docker:
+2. Configure o ambiente Docker:
    - Certifique-se de que o Docker e o Docker Compose estejam instalados e configurados.
    - Execute o comando para subir os contêineres:
      ```
      docker-compose up -d
      ```
+3. Instale as dependências:
+   ```
+   composer install
+   ```
+4. Copie o arquivo `.env.example` para `.env`:
+   ```
+   cp .env.example .env
+   ```
+5. Configure o arquivo `.env`:
+   - Configure as variáveis de ambiente, como DB_CONNECTION, DB_DATABASE, DB_USERNAME, DB_PASSWORD, etc.
+6. Gere a chave da aplicação:
+   ```
+   php artisan key:generate
+   ```
+
 7. Execute as migrações e seeders:
    ```
    php artisan migrate --seed
