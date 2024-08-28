@@ -1,67 +1,195 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Documentação do Sistema Solar Projects
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Sumário
+1. Visão Geral
+2. Entidades do Sistema
+   - User
+   - Customer
+   - Project
+3. Endpoints da API
+   - Autenticação
+   - Customers
+   - Projects
+4. Instruções de Instalação
+5. Instruções de Uso
 
-## About Laravel
+## 1. Visão Geral
+O sistema Solar Projects é uma aplicação para integradores solares que permite o cadastro, visualização, atualização e exclusão de projetos de energia solar. O sistema gerencia informações sobre clientes, localização da instalação, tipo de instalação e equipamentos necessários.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 2. Entidades do Sistema
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### User
+- Descrição: Representa os usuários que utilizam o sistema.
+- Atributos
+  - `id`: Identificador único do usuário.
+  - `name`: Nome do usuário.
+  - `email`:E-mail do usuário.
+  - `password`: Senha do usuário (armazenada de forma segura).
+  - `created_at`: Data de criação do usuário.
+  - `updated_at`: Data de atualização do usuário.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Customer
+- Descrição: Representa os clientes do sistema, que são aqueles que contratam os serviços de instalação solar.
+- Atributos
+  - `id`: Identificador único do cliente.
+  - `name`: Nome do cliente.
+  - `email`: E-mail do cliente.
+  - `phone`: Telefone do cliente (celular ou fixo).
+  - `document`: Documento do cliente (CPF ou CNPJ).
+  - `created_at`: Data de criação do cliente.
+  - `updated_at`: Data de atualização do cliente.
+ 
+### Project
+- Descrição: Representa os projetos solares, que são as instalações feitas para os clientes.
+- Atributos
+  - `id`: Identificador único do projeto.
+  - `customer_id`: Identificador do cliente associado ao projeto.
+  - `location`: Localização da instalação.
+  - `installation_type`: Tipo de instalação (enum: Fibrocimento, Cerâmico, Metálico, etc.).
+  - `equipment`: Equipamentos utilizados na instalação (enum: Módulo, Inversor, Cabo Tronco, etc.).
+  - `status`: Status do projeto (em andamento, concluído, etc.).
+  - `created_at`: Data de criação do projeto.
+  - `updated_at`: Data de atualização do projeto.
+ 
+## 3. Endpoints da API
 
-## Learning Laravel
+### Autenticação
+- Login
+   - Endpoint: `/api/login`
+   - Método: `POST`
+   - Descrição: Autentica o usuário no sistema.
+   - Parâmetros
+      - `email` (string, obrigatório)
+      - `password` (string, obrigatório)
+   - Resposta: Retorna um token JWT para autenticação.
+- Logout
+  - Endpoint `/api/logout`
+  - Método `POST`
+  - Descrição: Realiza o logout do usuário.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Customers
+- Listar Clientes
+   - Endpoint: `/api/customers`
+   - Método: `GET`
+   - Descrição: Retorna uma lista de todos os clientes.
+   - Resposta: JSON com a lista de clientes.
+- Criar Cliente
+  - Endpoint: `/api/customers`
+  - Método: `POST`
+  - Descrição: Cria um novo cliente.
+  - Parâmetros:
+    - `name` (string, obrigatório)
+    - `email` (string, obrigatório)
+    - `phone` (string, obrigatório)
+    - `address` (string, opcional)
+  - Resposta: JSON com os detalhes do cliente criado.
+- Atualizar Cliente
+  - Endpoint: `/api/customers/{id}`
+  - Método: `PUT`
+  - Descrição: Atualiza os dados de um cliente existente.
+  - Parâmetros
+    - `name` (string, opcional)
+    - `email` (string, opcional)
+    - `phone` (string, opcional)
+    - `address` (string, opcional)
+  - Resposta: JSON com os detalhes do cliente atualizado.
+- Deletar Cliente
+  - Endpoint: `/api/customers`
+  - Método: `DELETE`
+  - Descrição: Remove um cliente do sistema.
+  - Resposta: Status de sucesso ou erro.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Projects
+- Listar Projetos
+  - Endpoint: `/api/projects`
+  - Método: `GET`
+  - Descrição: Retorna uma lista de todos os projetos.
+  - Resposta: JSON com a lista de projetos.
+- Criar Projeto
+  - Endpoint: `/api/projects`
+  - Método: `POST`
+  - Descrição: Cria um novo projeto.
+  - Parâmetros:
+    - `description` (enum, obrigatório)
+    - `state` (enum, obrigatório)
+    - `installation_type` (enum, obrigatório)
+    - `customer_id` (integer, obrigatório)
+  - Resposta: JSON com os detalhes do projeto criado.
+- Atualizar Projeto
+  - Endpoint: `/api/projects/{id}`
+  - Método: `PUT`
+  - Descrição: Atualiza os dados de um projeto existente.
+  - Parâmetros
+    - `description` (enum, opcional)
+    - `state` (enum, opcional)
+    - `installation_type` (enum, opcional)
+    - `customer_id` (integer, opcional)
+  - Resposta: JSON com os detalhes do projeto atualizado.
+- Deletar Projeto
+  - Endpoint: `/api/projects/{id}`
+  - Método: `DELETE`
+  - Descrição: Remove um projeto do sistema.
+  - Resposta: Status de sucesso ou erro.
+ 
+## 4. Instruções de Instalação
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Pré-requisitos
 
-## Laravel Sponsors
+- PHP: Versão 8.0 ou superior.
+- Composer: Gerenciador de dependências PHP.
+- Docker: Para execução em ambiente Dockerizado.
+- Docker Compose: Para gerenciar contêineres Docker.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+# Passos de Instalação
 
-### Premium Partners
+1. Clone o repositório:
+   ```
+   git clone https://github.com/rebekaodilon/solar-projects.git
+   cd solar-projects
+   ```
+2. Instale as dependências:
+   ```
+   composer install
+   ```
+3. Copie o arquivo `.env.example` para `.env`:
+   ```
+   cp .env.example .env
+   ```
+4. Configure o arquivo `.env`:
+   - onfigure as variáveis de ambiente, como DB_CONNECTION, DB_DATABASE, DB_USERNAME, DB_PASSWORD, etc.
+5. Gere a chave da aplicação:
+   ```
+   php artisan key:generate
+   ```
+6. Configure o ambiente Docker:
+   - Certifique-se de que o Docker e o Docker Compose estejam instalados e configurados.
+   - Execute o comando para subir os contêineres:
+     ```
+     docker-compose up -d
+     ```
+7. Execute as migrações e seeders:
+   ```
+   php artisan migrate --seed
+   ```
+8. Inicie o servidor:
+   ```
+   php artisan serve
+   ```
+O sistema estará disponível em http://localhost:8080.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 5. Instruções de Uso
+# Acesso à API
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# solar-projects
+- Autenticação: Para acessar os endpoints protegidos, você deve primeiro se autenticar usando o endpoint de login para obter um token JWT.
+- Cabeçalho de Autorização: Em cada requisição subsequente, inclua o token no cabeçalho de autorização:
+  ```
+  Authorization: Bearer {token}
+  ```
+# Testes
+O sistema inclui testes unitários que podem ser executados com o comando:
+```
+php artisan test
+```
+# Documentação da API com Swagger:
+O sistema possui uma documentação interativa da API, acessível por meio do Swagger. Para visualizar e testar os endpoints, acesse:
+- Link: http://localhost:8080/api/documentation#/
