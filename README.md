@@ -75,6 +75,9 @@ O sistema Solar Projects é uma aplicação para integradores solares que permit
   - Endpoint `/api/logout`
   - Método `POST`
   - Descrição: Realiza o logout do usuário.
+  - Resposta:
+    - Status de Sucesso: Retorna uma mensagem de confirmação indicando que o logout foi realizado com sucesso.
+    - Status de Erro: Retorna uma mensagem de erro caso o logout não possa ser realizado (por exemplo, se o token JWT não for válido ou não estiver presente).
 
 ### Customers
 - Listar Clientes
