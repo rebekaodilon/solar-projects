@@ -54,6 +54,15 @@ O sistema Solar Projects é uma aplicação para integradores solares que permit
 ## 3. Endpoints da API
 
 ### Autenticação
+- Register
+   - Endpoint: `/api/register`
+   - Método: `POST`
+   - Descrição: Cria um novo usuário no sistema.
+   - Parâmetros
+      - `name` (string, obrigatório)
+      - `email` (string, obrigatório)
+      - `password` (string, obrigatório)
+   - Resposta: Retorna um token JWT para autenticação.
 - Login
    - Endpoint: `/api/login`
    - Método: `POST`
