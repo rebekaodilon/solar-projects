@@ -244,3 +244,7 @@ php artisan test
 # Documentação da API com Swagger:
 O sistema possui uma documentação interativa da API, acessível por meio do Swagger. Para visualizar e testar os endpoints, acesse:
 - Link: http://localhost:8080/api/documentation#/
+
+## Observação
+
+Este projeto é um case desenvolvido para a empresa 77sol.
