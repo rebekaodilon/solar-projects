@@ -93,7 +93,7 @@ O sistema Solar Projects é uma aplicação para integradores solares que permit
     - `name` (string, obrigatório)
     - `email` (string, obrigatório)
     - `phone` (string, obrigatório)
-    - `address` (string, opcional)
+    - `document` (string, opcional)
   - Resposta: JSON com os detalhes do cliente criado.
 - Atualizar Cliente
   - Endpoint: `/api/customers/{id}`
@@ -103,7 +103,7 @@ O sistema Solar Projects é uma aplicação para integradores solares que permit
     - `name` (string, opcional)
     - `email` (string, opcional)
     - `phone` (string, opcional)
-    - `address` (string, opcional)
+    - `document` (string, opcional)
   - Resposta: JSON com os detalhes do cliente atualizado.
 - Deletar Cliente
   - Endpoint: `/api/customers`
