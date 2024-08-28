@@ -4,6 +4,13 @@ namespace App\Base;
 
 use App\Http\Controllers\Controller;
 
+/**
+ * @OA\Info(
+ *     title="Solar Projects API",
+ *     version="1.0",
+ *     description="API for managing solar projects"
+ * )
+ */
 abstract class BaseController extends Controller
 {
     protected $per_page     = 10;    // Default per page pagination

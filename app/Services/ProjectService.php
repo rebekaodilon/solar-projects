@@ -160,6 +160,26 @@ class ProjectService
         try {
             $request = $request->all();
 
+            if (isset($request['equipments'])) {
+                $equipments = $request['equipments'];
+                unset($request['equipments']);
+
+                $projectEquipments = $this->equipmentRepository->listById($id)->toArray();
+
+                for ($i = 0; $i < count($projectEquipments); $i++) {
+                    $this->equipmentRepository->delete($projectEquipments[$i]['id']);
+                }
+
+                foreach ($equipments as $equipment) {
+                    $equipment['project_id'] = $id;
+                    $savedEquipment = $this->equipmentRepository->create($equipment);
+
+                    if (!$savedEquipment) {
+                        throw new \Exception('Error creating equipment');
+                    }
+                }
+            }
+
             $project = $this->projectRepository->update($id, $request);
             
             if (!$project) {

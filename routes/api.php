@@ -38,7 +38,7 @@ Route::middleware('auth:sanctum')->group(function(){
     });
 
     Route::get('equipments', [ProjectController::class, 'listAllEquipments']);
-    Route::get('installation_types', [ProjectController::class, 'listAllInstallationTypes']);
+    Route::get('installation-types', [ProjectController::class, 'listAllInstallationTypes']);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });
