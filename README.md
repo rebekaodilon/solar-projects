@@ -6,12 +6,12 @@
    - User
    - Customer
    - Project
-3. [Endpoints da API](#3-enpoints-da-api)
+3. [Endpoints da API](#3-endpoints-da-api)
    - Autenticação
    - Customers
    - Projects
-4. [Instruções de Instalação](#4-intrucoes-de-instalacao)
-5. [Instruções de Uso](#5-instrucoes-de-uso)
+4. [Instruções de Instalação](#4-instruções-de-instalação)
+5. [Instruções de Uso](#5-instruções-de-uso)
 
 ## 1. Visão Geral
 O sistema Solar Projects é uma aplicação para integradores solares que permite o cadastro, visualização, atualização e exclusão de projetos de energia solar. O sistema gerencia informações sobre clientes, localização da instalação, tipo de instalação e equipamentos necessários.
