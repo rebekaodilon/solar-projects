@@ -1001,6 +1001,11 @@
                         "description": "Type of the equipment",
                         "type": "string",
                         "example": "Módulo"
+                    },
+                    "quantity": {
+                        "description": "Quantity of the equipment",
+                        "type": "integer",
+                        "example": 10
                     }
                 },
                 "type": "object"

@@ -12,7 +12,13 @@ namespace App\Http\Controllers\Api\Components\Schemas\Equipment;
  *         type="string",
  *         description="Type of the equipment",
  *         example="Módulo"
- *     )
+ *     ),
+ *     @OA\Property(
+ *        property="quantity",
+ *        type="integer",
+ *        description="Quantity of the equipment",
+ *        example=10
+ *    )
  * )
  */
 class Equipment {}
