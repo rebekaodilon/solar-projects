@@ -131,6 +131,45 @@ O sistema Solar Projects é uma aplicação para integradores solares que permit
   - Descrição: Remove um projeto do sistema.
   - Resposta: Status de sucesso ou erro.
  
+  
+#### Equipamentos Relacionados a Projetos
+- Listar Equipamentos de um Projeto
+  - Endpoint: `/api/projects/{id}/equipments`
+  - Método: `GET`
+  - Descrição: Retorna uma lista de todos os equipamentos associados a um projeto específico.
+  - Resposta: JSON com a lista de equipamentos.
+- Adicionar Equipamento a um Projeto
+  - Endpoint: `/api/projects/{id}/equipments`
+  - Método: `POST`
+  - Descrição: Adiciona um novo equipamento a um projeto específico.
+  - Parâmetros:
+    - `type` (enum, obrigatório)
+    - `quantity` (integer, obrigatório)
+  - Resposta: JSON com os detalhes do equipamento adicionado.
+- Atualizar Equipamento de um Projeto
+  - Endpoint: `/api/projects/{id}/equipments`
+  - Método: `PUT`
+  - Descrição: Atualiza um equipamento associado a um projeto específico.
+  - Parâmetros:
+    - `type` (enum, opcional)
+    - `quantity` (integer, opcional)
+  - Resposta: JSON com os detalhes do equipamento atualizado.
+- Remover Equipamento de um Projeto
+  - Endpoint: `/api/projects/{id}/equipments`
+  - Método: `DELETE`
+  - Descrição: Remove um equipamento de um projeto específico.
+  - Resposta: Status de sucesso ou erro.
+- Listar Todos os Equipamentos
+  - Endpoint: `/api/projects/equipments`
+  - Método: `GET`
+  - Descrição: Retorna uma lista de todos os equipamentos disponíveis no sistema.
+  - Resposta: JSON com a lista de equipamentos.
+- Listar Todos os Tipos de Instalação
+  - Endpoint: `/api/projects/installation-types`
+  - Método: `GET`
+  - Descrição: Retorna uma lista de todos os tipos de instalação disponíveis no sistema.
+  - Resposta: JSON com a lista de tipos de instalação.
+ 
 ## 4. Instruções de Instalação
 
 ### Pré-requisitos
