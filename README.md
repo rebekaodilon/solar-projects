@@ -204,7 +204,7 @@ O sistema Solar Projects é uma aplicação para integradores solares que permit
    cp .env.example .env
    ```
 4. Configure o arquivo `.env`:
-   - onfigure as variáveis de ambiente, como DB_CONNECTION, DB_DATABASE, DB_USERNAME, DB_PASSWORD, etc.
+   - Configure as variáveis de ambiente, como DB_CONNECTION, DB_DATABASE, DB_USERNAME, DB_PASSWORD, etc.
 5. Gere a chave da aplicação:
    ```
    php artisan key:generate
